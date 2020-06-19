@@ -5,11 +5,27 @@
   "description": "A simple screen recorder",
   "main": "src/index.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron .",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "screen-recorder",
+    "win": {
+      "target": ["nsis"],
+      "icon": "src/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "src/installer-icon.ico",
+      "uninstallerIcon": "src/icon.ico",
+      "uninstallDisplayName": "Screen Recorder",
+      "license": "LICENSE.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "keywords": [],
   "author": {
@@ -45,6 +61,7 @@
     }
   },
   "dependencies": {
+    "electron-builder": "^22.7.0",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
